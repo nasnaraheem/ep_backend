@@ -19,10 +19,20 @@ from django.urls import path
 from accounts.views import TrainerSignUpView
 from rest_framework.authtoken.views import ObtainAuthToken
 from accounts.views import TrainerProfileRetrieveUpdateView
+from assessment.views import AssessmentListCreateView
+from assessment.views import AssessmentRetriveUpdateDeleteView
+from questions.views import QuestionsCreateView
+from questions.views import QuestionRetrieveUpdateDeleteView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("trainer/signup/",TrainerSignUpView.as_view()),
     path("token/",ObtainAuthToken.as_view()),
     path("trainer/profile/",TrainerProfileRetrieveUpdateView.as_view()),
+    path("assesment/",AssessmentListCreateView.as_view()),
+    path("assesment/<int:pk>/",AssessmentRetriveUpdateDeleteView.as_view()),
+
+    #questions
+    path("assesment/<int:pk>/questions/",QuestionsCreateView.as_view()),
+    path("questions/<int:pk>/",QuestionRetrieveUpdateDeleteView.as_view()),
 ]

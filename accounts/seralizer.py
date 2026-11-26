@@ -10,7 +10,7 @@ class TrainerSerializer(serializers.ModelSerializer):
         read_only_fields=["id","role"]
 
     def create(self, validated_data):
-        return User.objects.create_user(**validated_data,role="tutor")
+        return User.objects.create_user(**validated_data,role="trainer")
 
 class TrainerProfileSerializer(serializers.ModelSerializer):
 

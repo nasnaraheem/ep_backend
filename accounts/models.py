@@ -52,14 +52,16 @@ class StudentProfile(models.Model):
 from django.db.models.signals import post_save
 
 def create_trainer_profile(sender,instance,created,**kwargs):
+    
     if created and instance.role=="trainer":
-        TrainerProfile.objects.create(user=instance)
+
+     TrainerProfile.objects.create(user=instance)
 post_save.connect(create_trainer_profile,sender=User)
 
 def create_student_profile(sender,instance,created,**kwargs):
     if created and instance.role=="student" :
         StudentProfile.objects.create(user=instance)
-    post_save.connect(create_student_profile,sender=User)
+post_save.connect(create_student_profile,sender=User)
 
 
 
